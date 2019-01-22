@@ -14,14 +14,6 @@ class Doorkeeper::CustomTokensController < Doorkeeper::TokensController
     @_response_body = nil
 
     if self.status == 200
-      if strategy.resource_owner.try(:locked_at).present?
-        return render_failure_without_template(
-          APIStatus::AUTHENTICATION_FAILURE.merge(
-            message: 'Your account has been locked! Please contact info@xtaypro.com for more details.'
-          )
-        )
-      end
-
       render_success(
         { message: 'Successfully authenticated user' },
         {
