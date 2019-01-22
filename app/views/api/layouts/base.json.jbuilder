@@ -1,0 +1,6 @@
+json.status(@status)
+json.status_code(@status_code)
+json.message(@message)
+json.key_message(@key_message)
+json.data(JSON.parse(yield).presence)
+json.timestamp(Time.now.utc.to_i)
