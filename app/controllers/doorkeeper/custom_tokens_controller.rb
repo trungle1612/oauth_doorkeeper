@@ -36,24 +36,9 @@ class Doorkeeper::CustomTokensController < Doorkeeper::TokensController
   def revoke
     if authorized?
       revoke_token
-      revoke_push_notification_token
     end
 
     self.content_type = 'application/json'
     render_success_without_template(message: 'Successfully deauthenticated user')
-  end
-
-  private
-
-  def token
-    @token ||= Doorkeeper::AccessToken.by_token(params[:token]) ||
-      Doorkeeper::AccessToken.by_refresh_token(params[:token])
-  end
-
-  def revoke_push_notification_token
-    user = User.find_by(id: token.resource_owner_id)
-    return unless user
-    user.update(push_notification_token: nil)
-    user.push_notification_tokens.find_by(token: params[:push_notification_token]).try(:destroy)
   end
 end

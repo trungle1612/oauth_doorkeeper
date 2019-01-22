@@ -7,4 +7,13 @@ Rails.application.routes.draw do
     )
     controllers(tokens: 'doorkeeper/custom_tokens')
   end
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :trips, only: :index do
+        collection do
+          get 'mine'
+        end
+      end
+    end
+  end
 end
