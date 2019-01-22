@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     skip_controllers(
       :applications, :authorizations, :authorized_applications, :token_info
     )
-    controllers(token: 'doorkeeper/custom_tokens')
+    controllers(tokens: 'doorkeeper/custom_tokens')
   end
 end
