@@ -1,14 +1,16 @@
-class API::V1::TripsController < ApplicationController
+class API::V1::TripsController < API::BaseController
   before_action :doorkeeper_authorize!, only: :mine
 
   def index
     @trips = []
-    100.times do |i|
+    10.times do |i|
       @trips << {
         name: "trip_#{i}",
         code: SecureRandom.hex(10)
       }
     end
+
+    render_success(message: 'List trip')
   end
 
   def mine
@@ -16,5 +18,7 @@ class API::V1::TripsController < ApplicationController
       name: "kaka",
       code: SecureRandom.hex(10)
     }
+
+    render_success(message: 'Your trips')
   end
 end

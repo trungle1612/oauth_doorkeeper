@@ -5,18 +5,6 @@ module API::Rendering
     render_response(options: options, defaults: APIStatus::SUCCESS, data: data)
   end
 
-  def render_success_without_template(options = {})
-    render_success(options, {})
-  end
-
-  def render_failure(options = {}, data = nil)
-    render_response(options: options, defaults: APIStatus::FAILURE, data: data)
-  end
-
-  def render_failure_without_template(options = {})
-    render_failure(options, {})
-  end
-
   def render_response(opts = {})
     data = opts[:data]
     defaults = opts[:defaults] || {}
