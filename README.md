@@ -23,3 +23,17 @@
 ![](https://assets.digitalocean.com/articles/oauth/abstract_flow.png "withouth doorkeeper")
 2. with doorkeeper
 ![](https://i.imgur.com/zrwbb5j.png "with doorkeeper")
+
+### routes
+1. Default routes: `/oauth/token` params: `[:email, :password, :grant_type]`
+-> generate access_token
+EX:
+```
+curl -X POST 'localhost:3000/oauth/token?grant_type=password&email=test@gmail.com&password=123456'
+```
+response:
+```
+{"status":"Success","status_code":1000,"message":"Successfully authenticated user","key_message":"successfully_authenticated_user","data":{"access_token":"8c0484443cc7c3c86dfa529ed98e2e6636d2893f806bef73e06022056d9cc861","first_login":false},"timestamp":1552966294}
+
+```
+
