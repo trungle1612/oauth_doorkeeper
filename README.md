@@ -5,6 +5,11 @@
 | Establishing identity | verifying access |
 | 401 Unauthorized      | 403 Forbidden    |
 
+# Terms
+ - The third party Application: `Client`: The client is the application that is attemping to get access to the user's account.
+It need to get permission from user before it can do so.
+ - The API: `Resouce Server`: The resouce server is the API server used to access the user's infomation.
+
 ### Token based authentication
  - Alternative to session cookies
  - You don't worry about CSRF
